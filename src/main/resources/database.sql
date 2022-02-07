@@ -37,4 +37,8 @@ create table offers (
 insert into users values (1, 'maksim', '123')
 insert into users values (2, 'anton', '456')
 
-insert into products values (1, 1, null, 'Tomato', 'this is tomato', 10, '2022-10-25', '2022-10-28', 1.5)
+
+into products values (1, 1, null, 'Tomato', 'this is tomato', 10, '2022-10-25', '2022-10-28', 1.5)
+insert into offers values (1, 1, 2, 44);
+
+update products set offer_id = 1 where id = 1;
