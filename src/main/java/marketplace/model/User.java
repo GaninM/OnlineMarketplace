@@ -1,60 +1,69 @@
 package marketplace.model;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class User {
 
-     private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-     private String userName;
+    @Column(name = "user_name")
+    private String userName;
 
-     private String userLogin;
+    @Column(name = "user_login")
+    private String userLogin;
 
-     private String userPassword;
+    @Column(name = "user_password")
+    private String userPassword;
 
-     private List<Product> userProducts;
+    @OneToMany(mappedBy = "users")
+    private List<Product> userProducts;
 
 
-     public User() {
-     }
+    public User() {
+    }
 
-     public int getId() {
-          return id;
-     }
+    public long getId() {
+        return id;
+    }
 
-     public void setId(int id) {
-          this.id = id;
-     }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-     public String getUserName() {
-          return userName;
-     }
+    public String getUserName() {
+        return userName;
+    }
 
-     public void setUserName(String userName) {
-          this.userName = userName;
-     }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-     public String getUserLogin() {
-          return userLogin;
-     }
+    public String getUserLogin() {
+        return userLogin;
+    }
 
-     public void setUserLogin(String userLogin) {
-          this.userLogin = userLogin;
-     }
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
 
-     public String getUserPassword() {
-          return userPassword;
-     }
+    public String getUserPassword() {
+        return userPassword;
+    }
 
-     public void setUserPassword(String userPassword) {
-          this.userPassword = userPassword;
-     }
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
 
-     public List<Product> getUserProducts() {
-          return userProducts;
-     }
+    public List<Product> getUserProducts() {
+        return userProducts;
+    }
 
-     public void setUserProducts(List<Product> userProducts) {
-          this.userProducts = userProducts;
-     }
+    public void setUserProducts(List<Product> userProducts) {
+        this.userProducts = userProducts;
+    }
 }

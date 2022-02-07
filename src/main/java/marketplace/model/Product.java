@@ -1,35 +1,69 @@
 package marketplace.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "products")
 public class Product {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @OneToMany
+    @JoinTable(name = "offers", joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private long id;
 
+    @Column(name = "owner_id")
+    private long ownerId;
+
+    @Column(name = "offer_id")
+    private long offerId;
+
+    @Column(name = "product_title")
     private String productTitle;
 
+    @Column(name = "start_price")
     private int startPrice;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "start_date")
     private Date startDate;
 
+    @Column(name = "end_date")
     private Date endDate;
 
+    @Column(name = "bidInc")
     private int bidInc;
-
-    private long offerId;
 
 
     public Product() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public long getOfferId() {
+        return offerId;
+    }
+
+    public void setOfferId(long offerId) {
+        this.offerId = offerId;
     }
 
     public String getProductTitle() {
@@ -78,13 +112,5 @@ public class Product {
 
     public void setBidInc(int bidInc) {
         this.bidInc = bidInc;
-    }
-
-    public long getOfferId() {
-        return offerId;
-    }
-
-    public void setOfferId(long offerId) {
-        this.offerId = offerId;
     }
 }
