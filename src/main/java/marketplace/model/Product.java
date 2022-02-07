@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Product {
 
-    private int productId;
+    private int id;
 
     private String productTitle;
 
@@ -20,27 +20,16 @@ public class Product {
 
     private long offerId;
 
-    public Product(int productId, String productTitle, int startPrice, String description, Date startDate, Date endDate,
-                   int bidInc, long offerId) {
-        this.productId = productId;
-        this.productTitle = productTitle;
-        this.startPrice = startPrice;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.bidInc = bidInc;
-        this.offerId = offerId;
-    }
 
     public Product() {
     }
 
-    public int getProductId() {
-        return productId;
+    public int getId() {
+        return id;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getProductTitle() {

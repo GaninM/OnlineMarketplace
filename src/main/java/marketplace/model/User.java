@@ -4,7 +4,7 @@ import java.util.List;
 
 public class User {
 
-     private int userId;
+     private int id;
 
      private String userName;
 
@@ -14,23 +14,16 @@ public class User {
 
      private List<Product> userProducts;
 
-     public User(int userId, String userName, String userLogin, String userPassword, List<Product> userProducts) {
-          this.userId = userId;
-          this.userName = userName;
-          this.userLogin = userLogin;
-          this.userPassword = userPassword;
-          this.userProducts = userProducts;
-     }
 
      public User() {
      }
 
-     public int getUserId() {
-          return userId;
+     public int getId() {
+          return id;
      }
 
-     public void setUserId(int userId) {
-          this.userId = userId;
+     public void setId(int id) {
+          this.id = id;
      }
 
      public String getUserName() {
