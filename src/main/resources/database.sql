@@ -2,6 +2,7 @@
 create table users (
     id            INT          not null primary key ,
     user_name     VARCHAR(255) not null,
+    user_login    varchar(255) not null,
     user_password VARCHAR(255) not null
 )
 
@@ -17,8 +18,8 @@ create table products (
     end_date      date         not null,
     bidInc        int          not null,
 
-    foreign key (owner_id) references users(id)
-    --foreign key (offer_id) references offers(id)
+    foreign key (owner_id) references users(id),
+    foreign key (offer_id) references offers(id)
 )
 
 --Table: offers
@@ -34,11 +35,12 @@ create table offers (
 
 --Create test users
 
-insert into users values (1, 'maksim', '123')
-insert into users values (2, 'anton', '456')
+insert into users values (1, 'maksim', 'maksim', '123')
+insert into users values (2, 'anton', 'anton', '456')
 
 
-into products values (1, 1, null, 'Tomato', 'this is tomato', 10, '2022-10-25', '2022-10-28', 1.5)
+insert into products values (1, 1, null, 'Tomato', 'this is tomato', 10, '2022-10-25', '2022-10-28', 1.5);
+
 insert into offers values (1, 1, 2, 44);
 
 update products set offer_id = 1 where id = 1;
