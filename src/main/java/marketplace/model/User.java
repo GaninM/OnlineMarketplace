@@ -1,6 +1,11 @@
 package marketplace.model;
 
+import jakarta.validation.constraints.Size;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -15,12 +20,17 @@ public class User {
     private String userName;
 
     @Column(name = "user_login")
+    @Size(min = 5, message = "Не менее 5 символов")
     private String userLogin;
 
+    @Size(min = 5, message = "Не менее 5 символов")
     @Column(name = "user_password")
     private String userPassword;
 
-    @OneToMany(mappedBy = "users")
+    @Transient
+    private String userPasswordConfirm;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Product> userProducts;
 
 
@@ -57,6 +67,14 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public String getUserPasswordConfirm() {
+        return userPasswordConfirm;
+    }
+
+    public void setUserPasswordConfirm(String userPasswordConfirm) {
+        this.userPasswordConfirm = userPasswordConfirm;
     }
 
     public List<Product> getUserProducts() {

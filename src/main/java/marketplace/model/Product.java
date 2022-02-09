@@ -9,9 +9,6 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany
-    @JoinTable(name = "offers", joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private long id;
 
     @Column(name = "owner_id")
@@ -37,6 +34,10 @@ public class Product {
 
     @Column(name = "bidInc")
     private int bidInc;
+
+    @Transient
+    @ManyToOne
+    private User user;
 
 
     public Product() {
