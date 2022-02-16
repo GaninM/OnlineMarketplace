@@ -1,9 +1,16 @@
 package marketplace.model;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name = "products")
 public class Product {
 
@@ -35,83 +42,4 @@ public class Product {
     @Column(name = "bidInc")
     private int bidInc;
 
-    @Transient
-    @ManyToOne
-    private User user;
-
-
-    public Product() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public long getOfferId() {
-        return offerId;
-    }
-
-    public void setOfferId(long offerId) {
-        this.offerId = offerId;
-    }
-
-    public String getProductTitle() {
-        return productTitle;
-    }
-
-    public void setProductTitle(String productTitle) {
-        this.productTitle = productTitle;
-    }
-
-    public int getStartPrice() {
-        return startPrice;
-    }
-
-    public void setStartPrice(int startPrice) {
-        this.startPrice = startPrice;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getBidInc() {
-        return bidInc;
-    }
-
-    public void setBidInc(int bidInc) {
-        this.bidInc = bidInc;
-    }
 }

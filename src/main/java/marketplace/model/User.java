@@ -1,87 +1,81 @@
 package marketplace.model;
 
-import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "user_name")
     private String userName;
 
     @Column(name = "user_login")
-    @Size(min = 5, message = "Не менее 5 символов")
     private String userLogin;
 
-    @Size(min = 5, message = "Не менее 5 символов")
     @Column(name = "user_password")
     private String userPassword;
 
     @Transient
     private String userPasswordConfirm;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
-    private List<Product> userProducts;
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
-
-    public User() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserLogin() {
-        return userLogin;
-    }
-
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
-    }
-
-    public String getUserPassword() {
+    @Override
+    public String getPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    @Override
+    public String getUsername() {
+        return userLogin;
     }
 
-    public String getUserPasswordConfirm() {
-        return userPasswordConfirm;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setUserPasswordConfirm(String userPasswordConfirm) {
-        this.userPasswordConfirm = userPasswordConfirm;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public List<Product> getUserProducts() {
-        return userProducts;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public void setUserProducts(List<Product> userProducts) {
-        this.userProducts = userProducts;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
 }
