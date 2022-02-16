@@ -4,9 +4,9 @@ import marketplace.model.User;
 
 public interface UserService {
 
-    void save(User user);
-
-    User findByUsername(String username);
+    boolean save(User user);
 
     User findByUserLogin(String userLogin);
+
 }
+
