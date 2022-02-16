@@ -51,7 +51,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userLogin;
+        return userName;
     }
 
     @Override
@@ -78,4 +78,7 @@ public class User implements UserDetails {
         return roles;
     }
 
+    public String getUserLogin() {
+        return userLogin;
+    }
 }
