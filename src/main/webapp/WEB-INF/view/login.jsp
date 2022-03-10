@@ -6,13 +6,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>Log in with your account</title>
 
 </head>
@@ -27,11 +23,11 @@
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
             <label>
-                <input name="userLogin" type="text" class="form-control" placeholder="Username"
+                <input name="username" type="text" class="form-control" placeholder="Username"
                        autofocus="autofocus"/>
             </label>
             <label>
-                <input name="password" type="password" class="form-control" placeholder="Password"/>
+                <input name="userPassword" type="text" class="form-control" placeholder="Password"/>
             </label>
             <span>${error}</span>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

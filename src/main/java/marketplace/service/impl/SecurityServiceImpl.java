@@ -28,8 +28,8 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public void autoLogin(String userLogin, String userPassword) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(userLogin);
+    public void autoLogin(String username, String userPassword) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(userDetails, userPassword, userDetails.getAuthorities());
 

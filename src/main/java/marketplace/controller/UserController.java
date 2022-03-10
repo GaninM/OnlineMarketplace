@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-//TODO Replace @RequestMapping
-
 @Controller
 public class UserController {
 
@@ -25,17 +23,15 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
 
-    //@GetMapping(value = "/registration")
-    @RequestMapping(value = "/registration", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/registration", produces = MediaType.TEXT_HTML_VALUE)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
 
         return "registration";
     }
 
-    //@PostMapping(value = "/registration")
-    @RequestMapping(value = "/registration", method = RequestMethod.POST, produces = MediaType.TEXT_HTML_VALUE)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    @PostMapping(value = "/registration", produces = MediaType.TEXT_HTML_VALUE)
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -43,15 +39,13 @@ public class UserController {
         }
 
         userService.save(userForm);
+        securityService.autoLogin(userForm.getUsername(), userForm.getUserPasswordConfirm());
 
-        securityService.autoLogin(userForm.getUserLogin(), userForm.getUserPasswordConfirm());
-
-//        TODO replace welcome
         return "redirect:/welcome";
     }
 
-    //@GetMapping(value = "/login")
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+
+    @GetMapping(value = "/login")
     public String login(Model model, String error, String logout) {
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect");
@@ -62,10 +56,10 @@ public class UserController {
         }
 
         return "login";
+
     }
 
-    // @GetMapping(value = {"/", "/welcome"})
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+    @GetMapping(value = {"/", "/welcome"})
     public String welcome(Model model) {
         return "welcome";
     }
