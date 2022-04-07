@@ -23,6 +23,7 @@
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
         </h2>
 
+        <h2 class="text-center"><a href="${contextPath}/all-products">Look all items</a></h2>
     </c:if>
 
 </div>
