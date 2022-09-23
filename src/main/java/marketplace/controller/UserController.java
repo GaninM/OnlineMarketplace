@@ -28,7 +28,6 @@ public class UserController {
     @GetMapping(value = "/registration", produces = MediaType.TEXT_HTML_VALUE)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
-
         return "registration";
     }
 

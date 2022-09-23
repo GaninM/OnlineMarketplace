@@ -10,6 +10,7 @@
 
     <title>Welcome</title>
 
+    <link >
 </head>
 <body>
 
@@ -20,10 +21,11 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
-        </h2>
+        <h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
+            <h2 tex><a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
 
-        <h2 class="text-center"><a href="${contextPath}/all-products">Look all items</a></h2>
+
+        <h4><a href="${contextPath}/products">Look all items</a></h4>
     </c:if>
 
 </div>
