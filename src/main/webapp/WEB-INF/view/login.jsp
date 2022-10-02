@@ -9,35 +9,39 @@
 
 <head>
     <meta charset="utf-8">
-
     <title>Log in with your account</title>
-
+    <link href="${contextPath}/resources/css/style-login.css" rel="stylesheet">
 </head>
 
 <body>
-
-<div class="container">
-
-    <form method="POST" action="${contextPath}/login" class="form-signin">
+<form method="POST" action="${contextPath}/login" class="form-signin">
+    <div class="container-name">
         <h2 class="form-heading">Log in</h2>
+    </div>
 
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <label>
-                <input name="username" type="text" class="form-control" placeholder="Username"
-                       autofocus="autofocus"/>
-            </label>
-            <label>
-                <input name="userPassword" type="text" class="form-control" placeholder="Password"/>
-            </label>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <div class="form-group ${error != null ? 'has-error' : ''}">
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
-        </div>
+        <label for="username"><b>Username<br></b></label>
+        <input name="username" id="username" type="text" class="form-control" placeholder="Enter Username"
+               autofocus="autofocus"/>
 
-    </form>
+        <br>
+
+        <label for="userPassword"><b>Password<br></b></label>
+        <input name="userPassword" id="userPassword" type="text" class="form-control" placeholder="Enter Password"/>
+
+        <span>${error}</span>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <br>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <br>
+        <button class="create-account" type="button"><a class="registration-link" href="${contextPath}/registration">Create
+            an account</a></button>
+    </div>
+
+</form>
 
 </div>
 
