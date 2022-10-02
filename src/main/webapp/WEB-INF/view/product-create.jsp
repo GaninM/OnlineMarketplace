@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create product</title>
-    <link href="${contextPath}/resources/css/style-product-create.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 
 <body>

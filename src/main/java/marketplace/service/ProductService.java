@@ -10,11 +10,12 @@ public interface ProductService {
 
     Product findByName(String productName);
 
-    Product saveProduct(Product product);
+    void save(Product product);
 
     List<Product> findAll();
 
     Optional<Product> findById(Long id);
 
     void deleteById(Long id);
+
 }

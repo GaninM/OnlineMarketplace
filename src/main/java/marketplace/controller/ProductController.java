@@ -45,7 +45,7 @@ public class ProductController {
     public String createProduct(@ModelAttribute("productFrom")Product product, Principal principal) {
         User user = userRepository.findByUsername(principal.getName());
         product.setOwnerId(user.getId());
-        productService.saveProduct(product);
+        productService.save(product);
         return "redirect:/products";
     }
 

@@ -10,10 +10,10 @@
 <head>
     <meta charset="utf-8">
     <title>Log in with your account</title>
-    <link href="${contextPath}/resources/css/style-login.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="loginBody">
 <form method="POST" action="${contextPath}/login" class="form-signin">
     <div class="container-name">
         <h2 class="form-heading">Log in</h2>

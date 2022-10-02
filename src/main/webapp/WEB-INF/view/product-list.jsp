@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>All products</title>
-    <link href="${contextPath}/resources/css/style-product-list.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,8 +16,10 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 <div class="logout-text" onclick="document.forms['logoutForm'].submit()">Logout</div>
+<br>
+<p><h2 class="products">Items</h2></p>
+<p><a class="create-product" href="<c:url value="/product-create"/>">Create product</a></p>
 
-<h2 class="products">Items</h2>
 <table>
     <tr>
         <th scope="col">Id</th>
@@ -35,18 +37,16 @@
             <td><c:out value="${product.id}"/></td>
             <td><c:out value="${product.ownerId}"/></td>
             <td><c:out value="${product.offerId}"/></td>
-            <td><c:out value="${product.title}"/></td>
+            <td style="white-space: nowrap"><c:out value="${product.title}"/></td>
             <td><c:out value="${product.description}"/></td>
             <td><c:out value="${product.startPrice}"/></td>
-            <td><c:out value="${product.startDate}"/></td>
-            <td><c:out value="${product.endDate}"/></td>
+            <td style="white-space: nowrap"><c:out value="${product.startDate}"/></td>
+            <td style="white-space: nowrap"><c:out value="${product.endDate}"/></td>
             <td><c:out value="${product.bidInc}"/></td>
             <td><a href="${contextPath}/product-update/${product.id}">Update</a></td>
             <td><a href="${contextPath}/product-delete/${product.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
-<br/>
-<a class="create-product" href="<c:url value="/product-create"/>">Create product</a>
 </body>
 </html>
