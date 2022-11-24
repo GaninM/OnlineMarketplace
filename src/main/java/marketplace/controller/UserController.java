@@ -69,17 +69,27 @@ public class UserController {
 
     }
 
+    //TODO create userLots on welcome page. Uncommitted block in welcome.jsp
+
+//    @GetMapping(value = {"/", "/welcome"})
+//    public String welcome(Model model, Principal principal) {
+//        User user = userRepository.findByUsername(principal.getName());
+//        List<Product> myProducts = productService.findAll();
+//        for (Product product : myProducts) {
+//            if (!product.getOwnerId().equals(user.getId())) {
+//                myProducts.remove(product);
+//            }
+//        }
+//        model.addAttribute("myProducts", myProducts);
+//        return "welcome";
+//    }
+
+
+    //TODO delete this block after fix behavior todo
     @GetMapping(value = {"/", "/welcome"})
-    public String welcome(Model model, Principal principal) {
-        User user = userRepository.findByUsername(principal.getName());
-        List<Product> myProducts = productService.findAll();
-        for (Product product : myProducts) {
-            if (!product.getOwnerId().equals(user.getId())) {
-                myProducts.remove(product);
-            }
-        }
-        model.addAttribute("myProducts", myProducts);
+    public String welcome() {
         return "welcome";
     }
+
 
 }
