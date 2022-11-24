@@ -10,10 +10,10 @@
 <head>
     <meta charset="utf-8">
     <title>Log in with your account</title>
-    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style-login.css" rel="stylesheet">
 </head>
 
-<body class="loginBody">
+<body>
 <form method="POST" action="${contextPath}/login" class="form-signin">
     <div class="container-name">
         <h2 class="form-heading">Log in</h2>
@@ -35,9 +35,9 @@
 
         <br>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <button type="submit">Login</button>
         <br>
-        <button class="create-account" type="button"><a class="registration-link" href="${contextPath}/registration">Create
+        <button class="create-button" type="button"><a class="registration-link" href="${contextPath}/registration">Create
             an account</a></button>
     </div>
 
