@@ -18,7 +18,9 @@
     <h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
 </div>
 <div class="logout-text" onclick="document.forms['logoutForm'].submit()">Logout</div>
-<h4><a href="${contextPath}/products">Look all items</a></h4>
+
+<p><a class="look-all-items" href="<c:url value="/products"/>">Look all items</a></p>
+
 <p><a class="create-product" href="<c:url value="/product-create"/>">Create product</a></p>
 <h2 class="your-lots">Your lots</h2>
 
