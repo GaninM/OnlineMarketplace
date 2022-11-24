@@ -6,6 +6,7 @@ import marketplace.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -27,7 +28,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product saveProduct(Product product) {
-        return productRepository.save(product);
+    public void deleteById(Long id){
+        productRepository.deleteById(id);
     }
+
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
+    }
+
+    @Override
+    public void save(Product product) {
+        productRepository.save(product);
+    }
+
+
 }
