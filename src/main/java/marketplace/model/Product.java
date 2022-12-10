@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.StringJoiner;
 
 @Entity
 @Getter
@@ -45,4 +46,18 @@ public class Product {
     @Column(name = "bidinc")
     private int bidInc;
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Product.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("ownerId=" + ownerId)
+                .add("offerId=" + offerId)
+                .add("title='" + title + "'")
+                .add("description='" + description + "'")
+                .add("startPrice=" + startPrice)
+                .add("startDate=" + startDate)
+                .add("endDate=" + endDate)
+                .add("bidInc=" + bidInc)
+                .toString();
+    }
 }

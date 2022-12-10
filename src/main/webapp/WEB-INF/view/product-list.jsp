@@ -41,8 +41,8 @@
             <td><c:out value="${product.startDate}"/></td>
             <td><c:out value="${product.endDate}"/></td>
             <td><c:out value="${product.bidInc}"/></td>
-            <td><a href="${contextPath}/product-update/${product.id}">Update</a></td>
-            <td><a href="${contextPath}/product-delete/${product.id}">Delete</a></td>
+            <td><a href="${contextPath}/product-info/${product.id}">Information</a></td>
+<%--            <td><a href="${contextPath}/product-delete/${product.id}">Delete</a></td>--%>
         </tr>
     </c:forEach>
 </table>

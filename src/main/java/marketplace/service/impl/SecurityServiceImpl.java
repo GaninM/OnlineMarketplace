@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 public class SecurityServiceImpl implements SecurityService {
 
     private final AuthenticationManager authenticationManager;
-
     private final UserService userService;
 
     public SecurityServiceImpl(AuthenticationManager authenticationManager, UserService userService) {
@@ -41,5 +40,4 @@ public class SecurityServiceImpl implements SecurityService {
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
     }
-
 }

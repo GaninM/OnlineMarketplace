@@ -33,7 +33,7 @@
         </spring:bind></td>
 
         <td><spring:bind path="startPrice">
-            <form:input cssClass="text-field-input" type="text" path="startPrice" placeholder="Start price"/>
+            <form:input cssClass="text-field-input" type="text" path="startPrice" placeholder="Price"/>
         </spring:bind></td>
 
         <td><spring:bind path="startDate">
