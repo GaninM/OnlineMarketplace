@@ -18,4 +18,6 @@ public interface ProductService {
 
     void deleteById(Long id);
 
+    void updateProductPriceForId(Long id, int productPrice);
+
 }

@@ -1,9 +1,6 @@
 package marketplace.controller;
 
-import marketplace.model.Product;
 import marketplace.model.User;
-import marketplace.repository.UserRepository;
-import marketplace.service.ProductService;
 import marketplace.service.SecurityService;
 import marketplace.service.UserService;
 import marketplace.validator.UserValidator;
@@ -13,23 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
-import java.util.List;
-
 @Controller
 public class UserController {
 
     private final UserService userService;
-    private final ProductService productService;
-    private final UserRepository userRepository;
     private final SecurityService securityService;
-
     private final UserValidator userValidator;
 
-    public UserController(UserService userService, ProductService productService, UserRepository userRepository, SecurityService securityService, UserValidator userValidator) {
+    public UserController(UserService userService, SecurityService securityService, UserValidator userValidator) {
         this.userService = userService;
-        this.productService = productService;
-        this.userRepository = userRepository;
+
         this.securityService = securityService;
         this.userValidator = userValidator;
     }
@@ -47,13 +37,11 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
-
         userService.save(userForm);
         securityService.autoLogin(userForm.getUsername(), userForm.getUserPasswordConfirm());
 
         return "redirect:/welcome";
     }
-
 
     @GetMapping(value = "/login")
     public String login(Model model, String error, String logout) {
@@ -66,7 +54,6 @@ public class UserController {
         }
 
         return "login";
-
     }
 
     //TODO create userLots on welcome page. Uncommitted block in welcome.jsp
@@ -90,6 +77,4 @@ public class UserController {
     public String welcome() {
         return "welcome";
     }
-
-
 }

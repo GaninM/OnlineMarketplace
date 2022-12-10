@@ -54,7 +54,7 @@ tr:nth-child(even) {
 }
 
 
-.text-field-input {
+.text-field-input, .bid-field-input {
     display: block;
     width: 95%;
     height: calc(2.25rem + 2px);
@@ -69,6 +69,10 @@ tr:nth-child(even) {
     border: 1px solid #bdbdbd;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bid-field-input {
+    width: 200px;
 }
 
 .btn-block {

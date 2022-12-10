@@ -5,6 +5,8 @@ import marketplace.repository.BidRepository;
 import marketplace.service.BidService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class BidServiceImpl implements BidService {
 
@@ -14,10 +16,12 @@ public class BidServiceImpl implements BidService {
         this.bidRepository = bidRepository;
     }
 
-
     @Override
     public void saveBid(Bid bid) {
         bidRepository.save(bid);
     }
 
+    public Optional<Bid> findById(Long id) {
+        return bidRepository.findById(id);
+    }
 }
