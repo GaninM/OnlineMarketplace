@@ -32,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+
     public void deleteById(Long id) {
         productRepository.deleteById(id);
     }
@@ -58,4 +59,15 @@ public class ProductServiceImpl implements ProductService {
             throw new RuntimeException(e.getSQLState());
         }
     }
+
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
+    }
+
+    @Override
+    public void save(Product product) {
+        productRepository.save(product);
+    }
+
+
 }

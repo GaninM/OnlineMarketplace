@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+
 import java.util.Objects;
 
 @Controller
@@ -21,9 +22,11 @@ public class ProductController {
     private final BidService bidService;
     private final UserRepository userRepository;
 
+
     public ProductController(ProductService productService, BidService bidService, UserRepository userRepository) {
         this.productService = productService;
         this.bidService = bidService;
+
         this.userRepository = userRepository;
     }
 
@@ -41,12 +44,15 @@ public class ProductController {
     }
 
     @PostMapping("/product-create")
+
     public String createProduct(@ModelAttribute("productFrom") Product product, Principal principal) {
+
         User user = userRepository.findByUsername(principal.getName());
         product.setOwnerId(user.getId());
         productService.save(product);
         return "redirect:/products";
     }
+
 //
 //    @RequestMapping("/product-delete/{id}")
 //    public String deleteProduct(@PathVariable Long id, Principal principal) {
@@ -92,4 +98,5 @@ public class ProductController {
             return "redirect:/products";
         }
     }
+
 }
