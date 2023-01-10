@@ -14,15 +14,16 @@
 <form id="logoutForm" method="POST" action="${contextPath}/logout">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
-<div class="container-name">
-    <h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
-</div>
+
 <div class="logout-text" onclick="document.forms['logoutForm'].submit()">Logout</div>
+<div>
+    <h2 class="header">Welcome ${pageContext.request.userPrincipal.name}</h2>
+</div>
 
-<p><a class="look-all-items" href="<c:url value="/products"/>">Look all items</a></p>
-
+<p><a class="look-all-items" href="<c:url value="/products"/>">Look all products</a></p>
+<br>
 <p><a class="create-product" href="<c:url value="/product-create"/>">Create product</a></p>
-<h2 class="your-lots">Your lots</h2>
+<%--<h2 class="your-lots">Your lots</h2>--%>
 
 <%--<table>--%>
 <%--    <tr>--%>

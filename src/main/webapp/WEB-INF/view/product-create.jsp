@@ -13,7 +13,17 @@
 </head>
 
 <body>
-<h1>Create Product</h1>
+<form id="logoutForm" method="POST" action="${contextPath}/logout">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
+
+<div class="logout-text" onclick="document.forms['logoutForm'].submit()">Logout</div>
+<div>
+    <h2 class="header">Create Product</h2>
+</div>
+<br>
+<p><a class="look-all-items" href="<c:url value="/products"/>">Back to all products</a></p>
+<br>
 <form:form method="POST" modelAttribute="productForm">
     <table>
         <tr>
@@ -25,7 +35,8 @@
             <th scope="col">Bid inc</th>
         </tr>
         <td><spring:bind path="title">
-            <form:input cssClass="text-field-input" type="text" path="title" placeholder="Product title" autofocus="true"/>
+            <form:input cssClass="text-field-input" type="text" path="title" placeholder="Product title"
+                        autofocus="true"/>
         </spring:bind></td>
 
         <td><spring:bind path="description">
@@ -49,7 +60,7 @@
         </spring:bind></td>
     </table>
     <br>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    <button class="submit-button" type="submit">Submit</button>
 </form:form>
 </body>
 </html>

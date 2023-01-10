@@ -5,7 +5,14 @@ table {
     border-collapse: collapse;
     width: 100%;
     word-break: break-word;
-    text-autospace: punctuation;
+    text-autospace: none;
+}
+
+.description {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 th, td {
@@ -23,11 +30,11 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.container-name {
+.header {
     text-align: center;
 }
 
-.create-product {
+.create-product, .look-all-items, .submit-button {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     border: 1px solid grey;
     background-color: white;
@@ -37,6 +44,10 @@ tr:nth-child(even) {
     cursor: pointer;
     border-radius: 10px;
     text-decoration: none;
+}
+
+.create-product:hover, .look-all-items:hover, .btn-block:hover, .submit-button:hover {
+    background-color: #e7e7e7;
 }
 
 .logout-text {
@@ -87,9 +98,6 @@ tr:nth-child(even) {
     text-decoration: none;
 }
 
-.btn-block:hover {
-    background-color: #e7e7e7;
-}
 
 .products {
     size: A3;
@@ -97,22 +105,6 @@ tr:nth-child(even) {
     text-align: center;
 }
 
-.create-product:hover {
-    background-color: #e7e7e7;
-}
-
 .your-lots {
     text-align: center;
-}
-
-.look-all-items{
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    border: 1px lightskyblue;
-    background-color: white;
-    color: black;
-    padding: 14px 28px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 10px;
-    text-decoration: none;
 }
