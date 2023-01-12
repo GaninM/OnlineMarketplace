@@ -8,48 +8,47 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-
     <title>Create an account</title>
-
+    <link href="${contextPath}/resources/css/style-registration.css" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="container">
-
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signing-heading">Create your account</h2>
-        <spring:bind path="fullName">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="fullName" class="form-control" placeholder="Username" autofocus="true"/>
-                <form:errors path="fullName"/>
-            </div>
-        </spring:bind>
-
-        <spring:bind path="username">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" class="form-control" placeholder="User Login" autofocus="true"/>
-                <form:errors path="username"/>
-            </div>
-        </spring:bind>
-
-        <spring:bind path="userPassword">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="userPassword" path="userPassword" class="form-control" placeholder="User Password"/>
-                <form:errors path="userPassword"/>
-            </div>
-        </spring:bind>
-
-        <spring:bind path="userPasswordConfirm">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="userPasswordConfirm" path="userPasswordConfirm" class="form-control"
-                            placeholder="Comfirm your password"/>
-                <form:errors path="userPasswordConfirm"/>
-            </div>
-        </spring:bind>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </form:form>
-
+<div class="container-name">
+    <h2 class="form-heading">Log in</h2>
 </div>
+
+<form:form method="POST" modelAttribute="userForm" class="form-signin">
+    <spring:bind path="fullName">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <form:input type="text" path="fullName" placeholder="Username" autofocus="true"/>
+            <form:errors path="fullName"/>
+        </div>
+    </spring:bind>
+
+    <spring:bind path="username">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <form:input type="text" path="username" placeholder="User Login" autofocus="true"/>
+            <form:errors path="username"/>
+        </div>
+    </spring:bind>
+
+    <spring:bind path="userPassword">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <form:input type="password" path="userPassword" placeholder="User Password"/>
+            <form:errors path="userPassword"/>
+        </div>
+    </spring:bind>
+
+    <spring:bind path="userPasswordConfirm">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <form:input type="password" path="userPasswordConfirm" placeholder="Comfirm your password"/>
+            <form:errors path="userPasswordConfirm"/>
+        </div>
+    </spring:bind>
+    <button type="submit">Submit</button>
+    <p><a class="back-to-login" href="<c:url value="/login"/>">Back to Login</a></p>
+</form:form>
+
 </body>
 </html>
