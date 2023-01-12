@@ -27,7 +27,6 @@
         <th scope="col">Start date</th>
         <th scope="col">End date</th>
         <th scope="col">Bid Inc</th>
-        <th scope="col">New bid</th>
     </tr>
     <tr>
         <td><c:out value="${modelProduct.title}"/></td>

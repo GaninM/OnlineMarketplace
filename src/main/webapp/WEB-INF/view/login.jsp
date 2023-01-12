@@ -28,7 +28,7 @@
         <br>
 
         <label for="userPassword"><b>Password<br></b></label>
-        <input name="userPassword" id="userPassword" type="text" class="form-control" placeholder="Enter Password"/>
+        <input name="userPassword" id="userPassword" type="password" class="form-control" placeholder="Enter Password"/>
 
         <span>${error}</span>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -42,8 +42,6 @@
     </div>
 
 </form>
-
-</div>
 
 </body>
 </html>
