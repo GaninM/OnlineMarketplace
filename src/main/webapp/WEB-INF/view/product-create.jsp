@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create product</title>
-    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style-product-create.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,40 +25,54 @@
 <p><a class="look-all-items" href="<c:url value="/products"/>">Back to all products</a></p>
 <br>
 <form:form method="POST" modelAttribute="productForm">
-    <table>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Start price</th>
-            <th scope="col">Start date</th>
-            <th scope="col">End date</th>
-            <th scope="col">Bid inc</th>
-        </tr>
-        <td><spring:bind path="title">
+    <label for="title"><b>Title<br></b></label>
+    <spring:bind path="title">
+        <div>
             <form:input cssClass="text-field-input" type="text" path="title" placeholder="Product title"
                         autofocus="true"/>
-        </spring:bind></td>
+            <form:errors path="title"/>
+        </div>
+    </spring:bind>
 
-        <td><spring:bind path="description">
+    <label for="description"><b>Description<br></b></label>
+    <spring:bind path="description">
+        <div>
             <form:input cssClass="text-field-input" type="text" path="description" placeholder="Description"/>
-        </spring:bind></td>
+            <form:errors path="description"/>
+        </div>
+    </spring:bind>
 
-        <td><spring:bind path="startPrice">
+    <label for="startPrice"><b>Start Price<br></b></label>
+    <spring:bind path="startPrice">
+        <div>
             <form:input cssClass="text-field-input" type="text" path="startPrice" placeholder="Price"/>
-        </spring:bind></td>
+            <form:errors path="startPrice"/>
+        </div>
+    </spring:bind>
 
-        <td><spring:bind path="startDate">
+    <label for="startDate"><b>Start Date<br></b></label>
+    <spring:bind path="startDate">
+        <div class="start-date">
             <form:input cssClass="text-field-input" type="date" path="startDate" placeholder="Start date"/>
-        </spring:bind></td>
+            <form:errors path="startDate"/>
+        </div>
+    </spring:bind>
 
-        <td><spring:bind path="endDate">
+    <label for="endDate"><b>End Date<br></b></label>
+    <spring:bind path="endDate">
+        <div class="end-date">
             <form:input cssClass="text-field-input" type="date" path="endDate" placeholder="End date"/>
-        </spring:bind></td>
+            <form:errors path="endDate"/>
+        </div>
+    </spring:bind>
 
-        <td><spring:bind path="bidInc">
+    <label for="bidInc"><b>Bid Increment<br></b></label>
+    <spring:bind path="bidInc">
+        <div>
             <form:input cssClass="text-field-input" type="text" path="bidInc" placeholder="Bid Inc"/>
-        </spring:bind></td>
-    </table>
+            <form:errors path="bidInc"/>
+        </div>
+    </spring:bind>
     <br>
     <button class="submit-button" type="submit">Submit</button>
 </form:form>
