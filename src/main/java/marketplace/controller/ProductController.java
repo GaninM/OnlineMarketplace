@@ -6,8 +6,10 @@ import marketplace.model.User;
 import marketplace.repository.UserRepository;
 import marketplace.service.BidService;
 import marketplace.service.ProductService;
+import marketplace.validator.ProductValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -21,13 +23,15 @@ public class ProductController {
     private final ProductService productService;
     private final BidService bidService;
     private final UserRepository userRepository;
+    private final ProductValidator productValidator;
 
 
-    public ProductController(ProductService productService, BidService bidService, UserRepository userRepository) {
+    public ProductController(ProductService productService, BidService bidService, UserRepository userRepository, ProductValidator productValidator) {
         this.productService = productService;
         this.bidService = bidService;
 
         this.userRepository = userRepository;
+        this.productValidator = productValidator;
     }
 
     @GetMapping(value = "/products")
@@ -44,8 +48,12 @@ public class ProductController {
     }
 
     @PostMapping("/product-create")
-
-    public String createProduct(@ModelAttribute("productFrom") Product product, Principal principal) {
+    public String createProduct(@ModelAttribute("productForm") Product product, Principal principal,
+                                BindingResult bindingResult) {
+        productValidator.validate(product, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "product-create";
+        }
 
         User user = userRepository.findByUsername(principal.getName());
         product.setOwnerId(user.getId());
