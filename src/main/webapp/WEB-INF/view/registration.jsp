@@ -20,28 +20,28 @@
 
 <form:form method="POST" modelAttribute="userForm" class="form-signin">
     <spring:bind path="fullName">
-        <div class="form-group ${status.error ? 'has-error' : ''}">
+        <div>
             <form:input type="text" path="fullName" placeholder="Username" autofocus="true"/>
             <form:errors path="fullName"/>
         </div>
     </spring:bind>
 
     <spring:bind path="username">
-        <div class="form-group ${status.error ? 'has-error' : ''}">
-            <form:input type="text" path="username" placeholder="User Login" autofocus="true"/>
+        <div>
+            <form:input type="text" path="username" placeholder="User Login"/>
             <form:errors path="username"/>
         </div>
     </spring:bind>
 
     <spring:bind path="userPassword">
-        <div class="form-group ${status.error ? 'has-error' : ''}">
+        <div>
             <form:input type="password" path="userPassword" placeholder="User Password"/>
             <form:errors path="userPassword"/>
         </div>
     </spring:bind>
 
     <spring:bind path="userPasswordConfirm">
-        <div class="form-group ${status.error ? 'has-error' : ''}">
+        <div>
             <form:input type="password" path="userPasswordConfirm" placeholder="Comfirm your password"/>
             <form:errors path="userPasswordConfirm"/>
         </div>

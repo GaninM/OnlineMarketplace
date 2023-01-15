@@ -6,9 +6,10 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.form-heading {
+.container-name {
     text-align: center;
 }
+
 
 input[type=text], input[type=password] {
     width: 240px;
@@ -42,8 +43,19 @@ button {
     text-decoration: none;
 }
 
-.registration-link {
+.back-to-login {
+    float: left;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    border: 1px solid grey;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
     text-decoration: none;
-    color: white;
+}
+
+.back-to-login:hover {
+    background-color: #e7e7e7;
 }

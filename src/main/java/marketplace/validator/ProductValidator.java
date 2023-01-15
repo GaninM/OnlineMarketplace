@@ -1,7 +1,6 @@
 package marketplace.validator;
 
 import marketplace.model.Product;
-import marketplace.service.ProductService;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -37,7 +36,6 @@ public class ProductValidator implements Validator {
         if (product.getStartPrice() % product.getBidInc() != 0) {
             errors.rejectValue("startPrice", "Different.productForm.startPriceIncrement");
         }
-
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startDate", "Required");
         if (product.getStartDate().getTime() > product.getEndDate().getTime()) {
