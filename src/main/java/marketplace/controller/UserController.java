@@ -79,4 +79,9 @@ public class UserController {
         return "welcome";
     }
 
+    @GetMapping(value = "/admin")
+    public String admin() {
+        return "admin";
+    }
+
 }
