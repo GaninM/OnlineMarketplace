@@ -3,6 +3,7 @@ package marketplace.controller;
 import marketplace.model.Bid;
 import marketplace.model.Product;
 import marketplace.model.User;
+import marketplace.repository.ProductRepository;
 import marketplace.repository.UserRepository;
 import marketplace.service.BidService;
 import marketplace.service.ProductService;
@@ -23,14 +24,16 @@ public class ProductController {
     private final ProductService productService;
     private final BidService bidService;
     private final UserRepository userRepository;
+    private final ProductRepository productRepository;
     private final ProductValidator productValidator;
 
 
-    public ProductController(ProductService productService, BidService bidService, UserRepository userRepository, ProductValidator productValidator) {
+    public ProductController(ProductService productService, BidService bidService, UserRepository userRepository,
+                             ProductRepository productRepository, ProductValidator productValidator) {
         this.productService = productService;
         this.bidService = bidService;
-
         this.userRepository = userRepository;
+        this.productRepository = productRepository;
         this.productValidator = productValidator;
     }
 
@@ -60,17 +63,6 @@ public class ProductController {
         productService.save(product);
         return "redirect:/products";
     }
-
-//
-//    @RequestMapping("/product-delete/{id}")
-//    public String deleteProduct(@PathVariable Long id, Principal principal) {
-//        User user = userRepository.findByUsername(principal.getName());
-//        Optional<Product> product = productRepository.findById(id);
-//        if (user.getId().equals(product.get().getOwnerId())) {
-//            productService.deleteById(id);
-//        }
-//        return "redirect:/products";
-//    }
 
     @GetMapping("/product-info/{id}")
     public String getProductInfo(@PathVariable Long id, Model model) {
@@ -106,5 +98,33 @@ public class ProductController {
             return "redirect:/products";
         }
     }
+
+    @GetMapping(value = "/admin/products")
+    public String findAllForAdmin(Model model) {
+        List<Product> adminProducts = productService.findAll();
+        model.addAttribute("adminProducts", adminProducts);
+        return "/admin-product-list";
+    }
+
+
+    @GetMapping(value = "/admin/product-update/{id}")
+    public String productUpdateForm(@PathVariable("id") Long id, Model model) {
+        Product product = productService.findById(id).get();
+        model.addAttribute("product", product);
+        return "/admin-product-update";
+    }
+
+    @PostMapping(value = "/admin/product-update")
+    public String productUpdate(Product product) {
+        productService.save(product);
+        return "redirect:/admin/products";
+    }
+
+    @RequestMapping("/product-delete/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteById(id);
+        return "redirect:/admin/products";
+    }
+
 
 }

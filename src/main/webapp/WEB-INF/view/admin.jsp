@@ -18,6 +18,8 @@
         <h2>Admin Page ${pageContext.request.userPrincipal.name}</h2>
     </c:if>
 </div>
+<p><a class="look-all-items" href="<c:url value="/admin/products"/>">Look all products</a></p>
+
 
 <%--TODO create buttons user list and product list with function delete and edit --%>
 
