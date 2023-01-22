@@ -24,4 +24,13 @@ public class BidServiceImpl implements BidService {
     public Optional<Bid> findById(Long id) {
         return bidRepository.findById(id);
     }
+
+    @Override
+    public void deleteByProductId(Long id) {
+        for (Bid bid : bidRepository.findAll()) {
+            if (bid.getProductId().equals(id)) {
+                bidRepository.deleteById(bid.getId());
+            }
+        }
+    }
 }

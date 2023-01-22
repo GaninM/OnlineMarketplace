@@ -98,33 +98,4 @@ public class ProductController {
             return "redirect:/products";
         }
     }
-
-    @GetMapping(value = "/admin/products")
-    public String findAllForAdmin(Model model) {
-        List<Product> adminProducts = productService.findAll();
-        model.addAttribute("adminProducts", adminProducts);
-        return "/admin-product-list";
-    }
-
-
-    @GetMapping(value = "/admin/product-update/{id}")
-    public String productUpdateForm(@PathVariable("id") Long id, Model model) {
-        Product product = productService.findById(id).get();
-        model.addAttribute("product", product);
-        return "/admin-product-update";
-    }
-
-    @PostMapping(value = "/admin/product-update")
-    public String productUpdate(Product product) {
-        productService.save(product);
-        return "redirect:/admin/products";
-    }
-
-    @RequestMapping("/product-delete/{id}")
-    public String deleteProduct(@PathVariable Long id) {
-        productService.deleteById(id);
-        return "redirect:/admin/products";
-    }
-
-
 }

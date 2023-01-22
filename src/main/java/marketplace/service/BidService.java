@@ -10,4 +10,6 @@ public interface BidService {
 
     Optional<Bid> findById(Long id);
 
+    void deleteByProductId(Long id);
+
 }
