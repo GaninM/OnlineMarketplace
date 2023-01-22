@@ -20,9 +20,6 @@
 <h2 class="products">All products</h2>
 <table>
     <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Owner id</th>
-        <th scope="col">Offer id</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
         <th scope="col">Price</th>
@@ -32,9 +29,6 @@
     </tr>
     <c:forEach var="product" items="${products}">
         <tr>
-            <td><c:out value="${product.id}"/></td>
-            <td><c:out value="${product.ownerId}"/></td>
-            <td><c:out value="${product.offerId}"/></td>
             <td><c:out value="${product.title}"/></td>
             <td class="description"><c:out value="${product.description}"/></td>
             <td><c:out value="${product.startPrice}"/></td>
@@ -42,7 +36,6 @@
             <td><c:out value="${product.endDate}"/></td>
             <td><c:out value="${product.bidInc}"/></td>
             <td><a href="${contextPath}/product-info/${product.id}">More</a></td>
-<%--            <td><a href="${contextPath}/product-delete/${product.id}">Delete</a></td>--%>
         </tr>
     </c:forEach>
 </table>
